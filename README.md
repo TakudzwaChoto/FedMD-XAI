@@ -17,7 +17,6 @@ A comprehensive framework implementing **Federated Learning** with **Differentia
 - [Contributing](#contributing)
 
 ## Features
-
 ### Core Capabilities
 - **Federated Learning**: Privacy-preserving collaborative training across multiple clients
 - **Differential Privacy**: Mathematical privacy guarantees with configurable privacy budget (epsilon)
@@ -60,14 +59,12 @@ FedMD-XAI Framework
 ```
 
 ## Installation
-
 ### Prerequisites
 - Python 3.8+
 - Streamlit
 - Required ML libraries
 
 ### Setup
-
 1. **Clone repository**
 ```bash
 git clone https://github.com/TakudzwaChoto/FedMD-XAI.git
@@ -96,7 +93,6 @@ streamlit run main.py --server.port 8501
 - `requirements_fixed.txt` - Alternative configuration
 
 ## Usage
-
 ### 1. Data Upload
 - Supported formats: CSV, TSV, pipe-delimited (|)
 - Automatic label column detection
@@ -136,7 +132,6 @@ streamlit run main.py --server.port 8501
 - **DP Overhead**: Differential privacy performance impact analysis
 
 ## Configuration
-
 ### Federated Learning Config
 ```python
 @dataclass
@@ -184,7 +179,6 @@ class EnsembleModelConfig:
 ```
 
 ## Models & Algorithms
-
 ### 1. Random Forest
 - **Parameters**: 200 trees, max depth 25
 - **Features**: Gini impurity, balanced class weights
@@ -207,7 +201,6 @@ class EnsembleModelConfig:
 - **Purpose**: Linear decision boundary, interpretability
 
 ## Privacy Features
-
 ### Differential Privacy
 - **Mechanism**: Gaussian noise addition to gradients
 - **Privacy Budget**: Epsilon=0.5 (configurable)
@@ -220,7 +213,6 @@ class EnsembleModelConfig:
 - **Secure Aggregation**: FedAvg algorithm with privacy protection
 
 ## Explainability
-
 ### SHAP (SHapley Additive exPlanations)
 - **Global Explanations**: Overall feature importance
 - **Local Explanations**: Individual prediction explanations
@@ -237,8 +229,8 @@ class EnsembleModelConfig:
 - **Pattern Recognition**: Identification of malware indicators
 
 ## Performance
-
 ### Expected Metrics
+#### Depending on devices and dataset
 - **Accuracy**: >90%
 - **Precision**: >92%
 - **Recall**: >88%
@@ -246,7 +238,6 @@ class EnsembleModelConfig:
 - **AUC-ROC**: >0.95
 
 ## Performance Monitoring
-
 ### MUST-MEASURE Metrics
 The FedMD-XAI framework includes comprehensive performance monitoring capabilities to evaluate real-world feasibility:
 
@@ -317,7 +308,6 @@ The FedMD-XAI framework includes comprehensive performance monitoring capabiliti
 - **Early Stopping**: Prevents overfitting
 
 ## Advanced Features
-
 ### Model Distillation
 - Knowledge transfer from ensemble to lightweight models
 - Maintains performance while reducing complexity
@@ -360,7 +350,6 @@ fedmd-xai/
 ```
 
 ## Contributing
-
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
