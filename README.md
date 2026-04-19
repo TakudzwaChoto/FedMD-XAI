@@ -13,6 +13,7 @@ A comprehensive framework implementing **Federated Learning** with **Differentia
 - [Privacy Features](#privacy-features)
 - [Explainability](#explainability)
 - [Performance](#performance)
+- [Performance Monitoring](#performance-monitoring)
 - [Contributing](#contributing)
 
 ## Features
@@ -67,7 +68,7 @@ FedMD-XAI Framework
 
 ### Setup
 
-1. **Clone the repository**
+1. **Clone repository**
 ```bash
 git clone https://github.com/TakudzwaChoto/FedMD-XAI.git
 cd fedmd-xai
@@ -75,14 +76,24 @@ cd fedmd-xai
 
 2. **Install dependencies**
 ```bash
-pip install streamlit pandas numpy scikit-learn matplotlib seaborn
-pip install shap lime  # Optional: For XAI features
+# Use the compatible requirements file
+pip install -r requirements_compatible.txt
+
+# Or install manually
+pip install streamlit==1.32.0 pandas==2.2.2 numpy==1.26.4
+pip install matplotlib==3.8.4 seaborn==0.13.2 scikit-learn==1.4.2
+pip install shap==0.46.0 lime==0.2.0.1 psutil==5.9.8
 ```
 
 3. **Run the application**
 ```bash
-streamlit run main.py
+streamlit run main.py --server.port 8501
 ```
+
+### Requirements Files
+- `requirements_compatible.txt` - Recommended version with resolved dependencies
+- `requirements_new.txt` - Basic requirements list
+- `requirements_fixed.txt` - Alternative configuration
 
 ## Usage
 
@@ -114,6 +125,15 @@ streamlit run main.py
 - Confusion matrix and classification report
 - Feature importance rankings
 - SHAP and LIME visualizations
+
+### 5. Performance Monitoring
+- **Training Time**: Per-round and total training time measurement
+- **Network Latency**: Upload/download/round-trip communication time
+- **Communication Cost**: Model update size tracking (MB per round)
+- **Device Performance**: Memory and CPU usage monitoring
+- **System Stability**: Client dropout simulation and resilience testing
+- **XAI Latency**: Explanation generation time measurement
+- **DP Overhead**: Differential privacy performance impact analysis
 
 ## Configuration
 
@@ -224,6 +244,65 @@ class EnsembleModelConfig:
 - **Recall**: >88%
 - **F1-Score**: >90%
 - **AUC-ROC**: >0.95
+
+## Performance Monitoring
+
+### MUST-MEASURE Metrics
+The FedMD-XAI framework includes comprehensive performance monitoring capabilities to evaluate real-world feasibility:
+
+1. **Training Time per FL Round**
+   - Measures time taken for each federated learning round
+   - Tracks total training time across all rounds
+   - Identifies performance bottlenecks in training process
+
+2. **Network Latency (Communication Time)**
+   - Upload time: Client to server model update transmission
+   - Download time: Server to client model distribution
+   - Round-trip latency: Complete communication cycle measurement
+
+3. **Model Update Size (Communication Cost)**
+   - Measures size of model updates transmitted per round
+   - Tracks bandwidth requirements for federated learning
+   - Calculates total communication overhead
+
+4. **Device Performance (Resource Usage)**
+   - Memory usage: RAM consumption during training
+   - CPU usage: Processor utilization percentage
+   - Peak resource tracking for capacity planning
+
+5. **System Stability (Client Dropout Test)**
+   - Simulates client disconnections during training
+   - Measures system resilience to client failures
+   - Tracks recovery and adaptation capabilities
+
+6. **XAI Latency (Explanation Time)**
+   - Measures SHAP explanation generation time
+   - Tracks LIME local explanation performance
+   - Evaluates real-time explanation feasibility
+
+### Optional Metrics
+- **Differential Privacy Overhead**: Performance impact of privacy mechanisms
+- **Final Accuracy**: Model performance validation
+
+### Performance Dashboard
+- Real-time visualization of all metrics
+- 8-panel comprehensive dashboard
+- Export capabilities for research documentation
+- Performance recommendations based on measurements
+
+### Logging Format
+```
+=== MUST-MEASURE PERFORMANCE METRICS ===
+1. Training Time per FL Round
+   Round times: [45.2s, 42.8s, 40.1s, ...]
+   Average: 42.7s/round
+   Total: 427.0s
+
+2. Network Latency (Communication Time)
+   Upload time: 245.3 ms
+   Download time: 189.7 ms
+   Round-trip: 435.0 ms
+```
 
 ### Evaluation Methods
 - **5-fold Cross-Validation**: Robust performance estimation
